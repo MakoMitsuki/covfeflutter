@@ -18,6 +18,15 @@ class _CartPageState extends State<CartPage> {
     Provider.of<CoffeeShop>(context, listen: false).removeItemFromCart(coffee);
   }
 
+  void payNow() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Payment Complete")
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context){
     return Consumer<CoffeeShop>(builder: (context, value, child) =>
@@ -43,6 +52,22 @@ class _CartPageState extends State<CartPage> {
                       icon: Icon(Icons.delete)
                     );
                   },
+                )
+              ),
+              GestureDetector(
+                onTap: payNow,
+                child: Container(
+                  padding: const EdgeInsets.all(25),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.brown
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Pay Now",
+                      style: TextStyle(color: Colors.white)
+                    )
+                  ),
                 )
               ),
             ]
