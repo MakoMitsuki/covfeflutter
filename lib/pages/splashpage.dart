@@ -1,5 +1,5 @@
 import 'package:covfeflutter/const.dart';
-import 'package:covfeflutter/pages/homepage.dart';
+import 'package:covfeflutter/pages/mainpage.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -13,7 +13,7 @@ class _SplashPageState extends State<SplashPage> {
   void logIn(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const HomePage()),
+      MaterialPageRoute(builder: (context) => const MainPage()),
     );
   }
 
