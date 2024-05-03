@@ -1,3 +1,4 @@
+import 'package:covfeflutter/components/coffee_tile.dart';
 import 'package:covfeflutter/const.dart';
 import 'package:covfeflutter/models/coffee.dart';
 import 'package:covfeflutter/models/coffee_shop.dart';
@@ -12,6 +13,11 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+  // add coffee to cart
+  void addToCart(Coffee coffee) {
+    Provider.of<CoffeeShop>(context, listen: false).addItemToCart(coffee);
+  }
+
   @override
   Widget build(BuildContext context){
     return Consumer<CoffeeShop>(builder: (context, value, child) =>
@@ -31,8 +37,9 @@ class _ShopPageState extends State<ShopPage> {
                   itemBuilder: (context, index) {
                     Coffee eachCoffee = value.coffeeShop[index];
 
-                    return ListTile(
-                      title: Text(eachCoffee.name),
+                    return CoffeeTile(
+                      coffee: eachCoffee,
+                      onPressed: () => addToCart(eachCoffee),
                     );
                   },
                 )
