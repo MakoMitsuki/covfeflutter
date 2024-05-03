@@ -1,5 +1,5 @@
 import 'package:covfeflutter/models/coffee_shop.dart';
-import 'package:covfeflutter/pages/homepage.dart';
+import 'package:covfeflutter/pages/splashpage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             fontFamily: GoogleFonts.poppins().fontFamily,
           ),
-          home: HomePage(),
+          home: SplashPage(),
       ));
   }
 }
