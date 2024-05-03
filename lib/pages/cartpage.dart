@@ -19,6 +19,7 @@ class _CartPageState extends State<CartPage> {
   }
 
   void payNow() {
+    Provider.of<CoffeeShop>(context, listen: false).emptyCart();
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -53,6 +54,10 @@ class _CartPageState extends State<CartPage> {
                     );
                   },
                 )
+              ),
+              Text(
+                'Cart Total: ${oCcy.format(Provider.of<CoffeeShop>(context, listen: false).getUserCartTotal())}',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
               ),
               GestureDetector(
                 onTap: payNow,

@@ -1,6 +1,6 @@
 class Coffee {
   final String name;
-  final String price;
+  final double price;
   final String imagePath;
 
   Coffee({

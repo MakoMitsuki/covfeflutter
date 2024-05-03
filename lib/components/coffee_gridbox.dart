@@ -2,11 +2,11 @@ import 'package:covfeflutter/const.dart';
 import 'package:covfeflutter/models/coffee.dart';
 import 'package:flutter/material.dart';
 
-class CoffeeTile extends StatelessWidget {
+class CoffeeGridBox extends StatelessWidget {
   final Coffee coffee;
   final Widget icon;
   void Function()? onPressed;
-  CoffeeTile({
+  CoffeeGridBox({
     super.key,
     required this.coffee,
     required this.onPressed,
@@ -17,14 +17,28 @@ class CoffeeTile extends StatelessWidget {
   Widget build(BuildContext context){
     return Container(
       decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: mainColor,
           borderRadius: BorderRadius.circular(12),
         ),
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-      child: ListTile(
+      child: Column (
+        children: [
+          SizedBox(
+            height: 64,
+            width: 64,
+            child: Image.asset(coffee.imagePath, fit: BoxFit.cover,)
+           ),
+           Text(coffee.name),
+           Text(coffee.price.toString()),
+        ],
+      )
+    );
+  }
+}
+
+/*
+ListTile(
           title: Text(coffee.name),
-          subtitle: Text(oCcy.format(coffee.price)),
+          subtitle: Text(coffee.price),
           leading: SizedBox(
             height: 64,
             width: 64,
@@ -35,6 +49,4 @@ class CoffeeTile extends StatelessWidget {
             onPressed: onPressed,
           ),
         )
-    );
-  }
-}
+*/

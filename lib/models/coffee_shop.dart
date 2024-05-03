@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class CoffeeShop extends ChangeNotifier{
   // coffee for sale list
   final List<Coffee> _shop = [
-    Coffee(name: 'Black Coffee', price: '4.10', imagePath: 'lib/images/black-coffee.webp'),
-    Coffee(name: 'Espresso', price: '3.50', imagePath: 'lib/images/espresso.jpg'),
-    Coffee(name: 'Latte', price: '4.20', imagePath: 'lib/images/latte.jpg'),
-    Coffee(name: 'Iced Coffee', price: '4.40', imagePath: 'lib/images/icedcoffee.jpg'),
+    Coffee(name: 'Black Coffee', price: 4.10, imagePath: 'lib/images/black-coffee.webp'),
+    Coffee(name: 'Espresso', price: 3.50, imagePath: 'lib/images/espresso.jpg'),
+    Coffee(name: 'Latte', price: 4.20, imagePath: 'lib/images/latte.jpg'),
+    Coffee(name: 'Iced Coffee', price: 4.40, imagePath: 'lib/images/icedcoffee.jpg'),
   ];
 
   // user cart
@@ -19,6 +19,14 @@ class CoffeeShop extends ChangeNotifier{
   // get user cart
   List<Coffee> get userCart => _userCart;
 
+  double getUserCartTotal() {
+    double sum = 0; 
+    sum = _userCart.fold(0, (p, c) => p + c.price);
+
+    notifyListeners();
+    return sum;
+  }
+
   // add item to cart
   void addItemToCart(Coffee coffee) {
     _userCart.add(coffee);
@@ -29,4 +37,9 @@ class CoffeeShop extends ChangeNotifier{
     _userCart.remove(coffee);
     notifyListeners();
   } 
+
+  void emptyCart() {
+    _userCart = [];
+    notifyListeners();
+  }
 }
