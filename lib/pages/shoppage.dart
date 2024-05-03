@@ -13,7 +13,7 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
-  // add coffee to cart
+
   void addToCart(Coffee coffee) {
     Provider.of<CoffeeShop>(context, listen: false).addItemToCart(coffee);
   }
@@ -28,7 +28,7 @@ class _ShopPageState extends State<ShopPage> {
             children: [
               Text(
                 'How would you like your coffee?',
-                style: TextStyle(fontSize: 20)
+                style: pageTitleTextStyle,
               ),
               const SizedBox(height: 25),
               Expanded(
@@ -40,6 +40,7 @@ class _ShopPageState extends State<ShopPage> {
                     return CoffeeTile(
                       coffee: eachCoffee,
                       onPressed: () => addToCart(eachCoffee),
+                      icon: Icon(Icons.add)
                     );
                   },
                 )
